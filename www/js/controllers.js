@@ -15,11 +15,21 @@ angular.module('starter.controllers', [])
 //     }
 // })
 
-.controller('LoginCtrl', function($scope,  $ionicPopup, $state, dataService, $http) {
+.controller('LoginCtrl', function($scope,  $ionicPopup, $state, dataService, $http, $rootScope) {
     $scope.data = {};
 
     $scope.login = function(){
         dataService.LoginUsers($scope.data).then(function(data){
+
+
+          alert('pasa por LoginUsers');
+
+          $rootScope.username = data.username;
+          $rootScope.ejecutarRegistroUsuario();
+
+          alert('pasa los rootScope');
+
+
             $scope.items = data;
             
             console.log(data.username);

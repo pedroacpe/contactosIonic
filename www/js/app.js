@@ -8,10 +8,13 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
 
 .constant('config',{
-  endPoint: 'http://bahia11s/bs-contactos/api'
+  endPoint: 'https://app.bahiasoftware.es/bs-contactos/api'
 })
 
-.run(function($ionicPlatform, $cordovaPush, $rootScope) {
+//http://bahia11s/bs-contactos/api
+
+
+.run(function($ionicPlatform, $cordovaPush, $rootScope, dataService, $cordovaDevice) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -29,7 +32,10 @@ var androidConfig = {
   };
 
 
+//con el rootscope no lo ejecuta al iniciar
+$rootScope.ejecutarRegistroUsuario = function(){
 
+alert('pasa por ejecutarRegistroUsuario');
 
 $cordovaPush.register(androidConfig).then(function(result) {
       
@@ -40,6 +46,8 @@ $cordovaPush.register(androidConfig).then(function(result) {
        console.log("Register error " + err)
     })
 
+}
+
 
 
 $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
@@ -47,7 +55,26 @@ $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification
         case 'registered':
           if (notification.regid.length > 0 ) {
             alert('registration ID = ' + notification.regid);
+
+          //"platform":"android", "token":"1234", "username":"antoni"
+          var datosToken = {};
+
+          datosToken.platform = $cordovaDevice.getPlatform();
+          datosToken.token = notification.regid;
+          datosToken.username = $rootScope.username;
+
+          alert(JSON.stringify(datosToken));
+
+          dataService.RegisterUser(datosToken).then(
+            function(data){
+                  alert('exito')
+            },
+            function(error) {
+
+                  alert('fail')
+             })
           }
+
           break;
 
         case 'message':

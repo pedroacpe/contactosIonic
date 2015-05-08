@@ -55,6 +55,12 @@ console.log(config)
         return DeferValue.promise;
     };
 
+instance.RegisterUser = function(idToken){
+
+        var DeferValue = $q.defer();
+        doPost("/register", idToken,DeferValue.resolve, DeferValue.reject);
+        return DeferValue.promise;
+    };
 
 
 //Make get request
@@ -89,8 +95,7 @@ console.log(config)
             method: 'POST',
             url: config.endPoint + url,
             data: data
-            
-        }
+            }
 
         $http(req)
         .success(function( data ){
