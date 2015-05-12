@@ -73,16 +73,16 @@ angular.module('starter.services', [])
         return DeferValue.promise;
     };
 //probando enviar mensaje
-    instance.sendText2 = function(envioMensaje, onSuccess, onError){
-        doPost("/push",envioMensaje,
-          function(data){
-            onSuccess(data);
-          }, 
-          function(error){
-            onError(error);
-          }
-        );
-    };
+    // instance.sendText2 = function(envioMensaje, onSuccess, onError){
+    //     doPost("/push",envioMensaje,
+    //       function(data){
+    //         onSuccess(data);
+    //       }, 
+    //       function(error){
+    //         onError(error);
+    //       }
+    //     );
+    // };
 
 //Make get request
     doGet = function(url, onSuccessCallback, onErrorCallback){

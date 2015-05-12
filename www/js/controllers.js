@@ -22,12 +22,12 @@ angular.module('starter.controllers', [])
         dataService.LoginUsers($scope.data).then(function(data){
 
 
-          alert('pasa por LoginUsers');
+          //alert('pasa por LoginUsers');
 
           $rootScope.username = data.username;
           $rootScope.ejecutarRegistroUsuario();
 
-          alert('pasa los rootScope');
+          //alert('pasa los rootScope');
 
 
             $scope.items = data;
@@ -149,44 +149,46 @@ $scope.enviarComentario = function(comentario, username){
 
       var mensaje = {};
       mensaje.username = username;
-      mensaje.comentario = comentario;
+      mensaje.message = comentario;
 
-      alert(JSON.stringify(mensaje));
+      //alert(JSON.stringify(mensaje));
 
     //console.log(comentario, username);
 
-
-    dataService.sendText2(mensaje,
-            function(data){
-              alert("exito");
-              $state.go('listaContactos');
-            },
-            function(error){
-              alert("error");
+// //para sendText2
+//     dataService.sendText2(mensaje,
+//             function(data){
+//               alert("exito");
+//               $state.go('listaContactos');
+//             },
+//             function(error){
+//               alert("error");
              
-            }
-          )};
-  //   dataService.SendText(mensaje).then(function(data){
+//             }
+//           )};
+
+
+    dataService.SendText(mensaje).then(function(data){
       
       
 
 
 
 
-  //   // for (index in $scope.items){
-  //   //   //console.log($scope.items[index])
-  //   //     if (idUser==$scope.items[index].id){
-  //   //       $superCache.put('comentario',$scope.items[index] );
+    // for (index in $scope.items){
+    //   //console.log($scope.items[index])
+    //     if (idUser==$scope.items[index].id){
+    //       $superCache.put('comentario',$scope.items[index] );
 
-  //   //       console.log("2" + comentario);
-  //   //     }
-  //   // };
-  //   alert('exito')
-  //   $state.go('listaContactos');
-  // }, function(error) {
-  //           alert(JSON.stringify(error))
-  //           console.log('Failure...', error);
-  //       })};
+    //       console.log("2" + comentario);
+    //     }
+    // };
+    alert('exito')
+    $state.go('listaContactos');
+  }, function(error) {
+            alert(JSON.stringify(error))
+            console.log('Failure...', error);
+        })};
 
 //probando enviar mensaje
 

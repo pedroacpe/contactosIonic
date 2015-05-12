@@ -35,7 +35,7 @@ var androidConfig = {
 //con el rootscope no lo ejecuta al iniciar
 $rootScope.ejecutarRegistroUsuario = function(){
 
-alert('pasa por ejecutarRegistroUsuario');
+//alert('pasa por ejecutarRegistroUsuario');
 
 $cordovaPush.register(androidConfig).then(function(result) {
       
@@ -54,7 +54,7 @@ $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification
       switch(notification.event) {
         case 'registered':
           if (notification.regid.length > 0 ) {
-            alert('registration ID = ' + notification.regid);
+            //alert('registration ID = ' + notification.regid);
 
           //"platform":"android", "token":"1234", "username":"antoni"
           var datosToken = {};
@@ -63,7 +63,7 @@ $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification
           datosToken.token = notification.regid;
           datosToken.username = $rootScope.username;
 
-          alert(JSON.stringify(datosToken));
+          //alert(JSON.stringify(datosToken));
 
           dataService.RegisterUser(datosToken).then(
             function(data){

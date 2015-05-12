@@ -4,8 +4,12 @@
   <ion-content class="padding">
     <img ng-src="{{persona.avatar}}" style="width: 64px; height: 64px">
     <p>
-      <h4 class="icon ion-ios-telephone-outline">    {{persona.phone}}</h4>
-        <h4 class="icon ion-email">    {{persona.email}}</h4>
+      <h4 class="icon ion-ios-telephone-outline">  
+       <a href="tel:{{persona.phone}}">{{persona.phone}} </a> 
+     </h4>
+        <h4 class="icon ion-email"> 
+          <a href="mailto:{{persona.email}}">   {{persona.email}} </a>
+        </h4>
     </p>
     
     <hr>
