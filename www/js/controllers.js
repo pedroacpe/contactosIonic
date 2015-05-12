@@ -123,7 +123,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('ContactoDetalleCtrl', function($scope, $http, $superCache) {
+.controller('ContactoDetalleCtrl', function($scope, $http, $superCache, $state, dataService) {
   
   console.log('contactoDetalleCtrl')
 //$superCache.put('contactoDetalle')
@@ -131,6 +131,64 @@ angular.module('starter.controllers', [])
   $scope.persona = $superCache.get('persona');
   console.log($scope.persona);
 
+ // //probando
+ //  $scope.autoExpand = function(e) {
+ //        var element = typeof e === 'object' ? e.target : document.getElementById(e);
+ //        var scrollHeight = element.scrollHeight -100; // replace 60 by the sum of padding-top and padding-bottom
+ //        element.style.height =  scrollHeight + "px";    
+ //    };
+  
+ //  function expand() {
+ //    $scope.autoExpand('message');
+ //  }
+ //  //probando
+
+
+//probando enviar mensaje
+$scope.enviarComentario = function(comentario, username){
+
+      var mensaje = {};
+      mensaje.username = username;
+      mensaje.comentario = comentario;
+
+      alert(JSON.stringify(mensaje));
+
+    //console.log(comentario, username);
+
+
+    dataService.sendText2(mensaje,
+            function(data){
+              alert("exito");
+              $state.go('listaContactos');
+            },
+            function(error){
+              alert("error");
+             
+            }
+          )};
+  //   dataService.SendText(mensaje).then(function(data){
+      
+      
+
+
+
+
+  //   // for (index in $scope.items){
+  //   //   //console.log($scope.items[index])
+  //   //     if (idUser==$scope.items[index].id){
+  //   //       $superCache.put('comentario',$scope.items[index] );
+
+  //   //       console.log("2" + comentario);
+  //   //     }
+  //   // };
+  //   alert('exito')
+  //   $state.go('listaContactos');
+  // }, function(error) {
+  //           alert(JSON.stringify(error))
+  //           console.log('Failure...', error);
+  //       })};
+
+//probando enviar mensaje
 
 
 

@@ -14,10 +14,11 @@
 
 <form id="enquiry" action="">
 	<h5>Mensaje</h5>
-  <textarea maxlength="140" name="message" id="message" placeholder="Escribe aquí tu comentario"></textarea>
+  <textarea maxlength="500" name="message" id="message" placeholder="Escribe aquí tu comentario" ng-model="comentario"></textarea>
+  {{comentario}}
 <br>
 
-  <input class="button button-block button-assertive" type="submit" value="Enviar">
+  <input class="button button-block button-assertive" type="submit" value="Enviar" ng-click="enviarComentario(comentario, persona.username)">
 
 </form>
 
