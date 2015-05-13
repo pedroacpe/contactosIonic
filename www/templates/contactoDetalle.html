@@ -3,29 +3,21 @@
 <ion-view view-title="{{persona.name}}" name="contactoDetalle-view">
   <ion-content class="padding">
     <img ng-src="{{persona.avatar}}" style="width: 64px; height: 64px">
-    <p>
-      <h4 class="icon ion-ios-telephone-outline">  
-       <a href="tel:{{persona.phone}}">{{persona.phone}} </a> 
-     </h4>
+      <p>
+        <h4 class="icon ion-ios-telephone-outline">  
+          <a href="tel:{{persona.phone}}">{{persona.phone}} </a> 
+        </h4>
         <h4 class="icon ion-email"> 
           <a href="mailto:{{persona.email}}">   {{persona.email}} </a>
         </h4>
-    </p>
-    
-    <hr>
-
-    
-
-<form id="enquiry" action="">
-	<h5>Mensaje</h5>
-  <textarea maxlength="500" name="message" id="message" placeholder="Escribe aquí tu comentario" ng-model="comentario"></textarea>
-  {{comentario}}
-<br>
-
-  <input class="button button-block button-assertive" type="submit" value="Enviar" ng-click="enviarComentario(comentario, persona.username)">
-
-</form>
-
-
+      </p>
+      <hr>
+      <form id="enquiry" action="">
+        <h5>Mensaje</h5>
+        <textarea maxlength="500" name="message" id="message" placeholder="Escribe aquí tu comentario" ng-model="comentario"></textarea>
+        {{comentario}}
+        <br>
+        <input class="button button-block button-assertive" type="submit" value="Enviar" ng-click="enviarComentario(comentario, persona.username)">
+      </form>
   </ion-content>
 </ion-view>

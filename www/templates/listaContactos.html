@@ -1,40 +1,25 @@
 <ion-view view-title="Contactos" name="listaContactos-view">
-
-<ion-content>
-
-<div class="bar bar-header item-input-inset">
-<ion-search placeholder="Search a user" filter="search"></ion-search>
-</div>
-
-      
+  <ion-content>
+    <div class="bar bar-header item-input-inset">
+      <ion-search placeholder="Search a user" filter="search">
+      </ion-search>
+    </div>
+     
     <div class="list" ng-repeat="item in items | filter:search.value" ng-click="onClick(item.id)">
-    <div class="item item-avatar" >
+      <div class="item item-avatar" >
 
-      
-
-      <img ng-src="{{item.avatar}}" >
-        <h2 class="icon ion-person-stalker">   {{item.name}}</h2>
-        <h4 class="icon ion-ios-telephone-outline">   {{item.phone}}</h4>
-        <h4 class="icon ion-email">   {{item.email}}</h4>
-        
+        <img ng-src="{{item.avatar}}" >
+          <h2 class="icon ion-person-stalker">   {{item.name}}</h2>
+          <h4 class="icon ion-ios-telephone-outline">   {{item.phone}}</h4>
+          <h4 class="icon ion-email">   {{item.email}}</h4>
+      </div>
     </div>
+  </ion-content>
+  <div class="bar bar-footer bar-assertive">
+    <div class="button-bar">
     </div>
-
-
-
-
-
-
-      </ion-content>
-
-
-<div class="bar bar-footer bar-assertive">
-  <div class="button-bar">
-  
-
-</div>
-</div>
-      </ion-view>
+  </div>
+</ion-view>
 
 
 
