@@ -44,6 +44,17 @@ angular.module('starter.controllers', [])
 
 
   .controller('ListaContactosCtrl', function($scope, $http, $state, $superCache, dataService) {
+    $scope.$on('$ionicView.beforeEnter', function () { 
+
+      dataService.getUsers().then(function(data) {
+          $scope.items = data;
+          console.log('Success!', data);
+        }, function(error) {
+          console.log('Failure...', error);
+        });
+
+
+     })
     $scope.items = [];
 
                          //  $http({
@@ -64,12 +75,7 @@ angular.module('starter.controllers', [])
                          //  $scope.error = error;
                          //  });
 
-    dataService.getUsers().then(function(data) {
-      $scope.items = data;
-      console.log('Success!', data);
-    }, function(error) {
-      console.log('Failure...', error);
-    });
+  
 
     $scope.onClick = function (idUser) {
 
@@ -79,6 +85,9 @@ angular.module('starter.controllers', [])
     for (index in $scope.items){
       //console.log($scope.items[index])
       if (idUser==$scope.items[index].id){
+        console.log('entra en el if');
+        console.log(idUser);
+        console.log($scope.items[index]);
         $superCache.put('persona',$scope.items[index] )
       }
     };
@@ -91,7 +100,16 @@ angular.module('starter.controllers', [])
 
   .controller('ContactoDetalleCtrl', function($scope, $http, $superCache, $state, dataService) {
     console.log('contactoDetalleCtrl')
-    $scope.persona = $superCache.get('persona');
+    console.log($superCache.info());
+
+     $scope.$on('$ionicView.beforeEnter', function () { 
+ $scope.persona = $superCache.get('persona');
+
+
+     })
+   
+
+    console.log($superCache.info());
     console.log($scope.persona);
 
     //probando enviar mensaje
@@ -121,13 +139,88 @@ angular.module('starter.controllers', [])
         }, function(error) {
           alert(JSON.stringify(error))
           console.log('Failure...', error);
-        })};
+        })}
+
+//estoesprueba
+$scope.irAModificar = function () {
+
+
+    //$superCache.put('persona',$scope.persona );
+    //console.log(persona);
+    //var cacheUsuario;
+    //$superCache.put(persona);
+    //$location.path('/modificarDatos');
+    $state.go('modificarDatos');
+    };
+
+
+
+        
 
     //probando enviar mensaje
 
-
-
   })
+
+
+
+//probando controller modificarDatos
+  .controller('ModificarDatosCtrl', function($scope, $http, $superCache, dataService, $state ) {
+
+    console.log($superCache.info());
+    console.log($superCache.info());
+     $scope.$on('$ionicView.beforeEnter', function () { 
+
+   
+
+     $scope.persona = $superCache.get('persona');
+     console.log($superCache.info());
+    console.log($scope.persona.phone);
+    // //alert($scope.persona.email);
+    // console.log($scope.persona);
+    })
+
+     $scope.modificarDatos = function(idUser, url, email, telef, extension){
+      console.log(idUser);
+
+      var datosModificados = {};
+      datosModificados.avatar = url;
+      datosModificados.email = email;
+      datosModificados.extension = extension;
+      datosModificados.phone = telef;
+      
+      // {"avatar":"url","email":"2","extension":"3","phone":"4","password":"1234"}
+
+      //alert(JSON.stringify(mensaje));
+      //console.log(comentario, username);
+
+                        //otro método //para sendText2
+                        //     dataService.sendText2(mensaje,
+                        //             function(data){
+                        //               alert("exito");
+                        //               $state.go('listaContactos');
+                        //             },
+                        //             function(error){
+                        //               alert("error");
+                                     
+                        //             }
+                        //           )};
+        dataService.ModifiUser(idUser, datosModificados).then(function(data){
+          alert('exito')
+          $state.go('listaContactos');
+        }, function(error) {
+          alert(JSON.stringify(error))
+          console.log('Failure...', error);
+        })}
+
+
+    
+
+    
+  })
+
+
+
+
 
 
 //buscador con filtro sobre la lista

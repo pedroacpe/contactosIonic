@@ -1,0 +1,97 @@
+ <!-- página para modificar los datos de cada contacto-->
+  
+<ion-view view-title="{{persona.name}}" name="modificarDatos-view">
+  <ion-content class="padding">
+      <div class="list">   
+        
+        <div class="avatar">
+        <img ng-src="{{persona.avatar}}" style="width: 64px; height: 64px">
+        <h5>Modificar avatar</h5>
+        <input class="linea" type="text" ng-model="persona.avatar" style="margin-bottom:20px">
+        </div>
+
+        <h5>Modificar email</h5>
+        <div class="item item-icon-left">
+        <i class="icon ion-email"></i>
+        <input class="linea" type="text" ng-model="persona.email">
+        </div>
+
+        <h5>Modificar teléfono</h5>
+        <div class="item item-icon-left">
+        <i class="icon ion-ios-telephone"></i>
+        <input type="text" ng-model="persona.phone"/>
+        </div>
+
+        <h5>Modificar extensión</h5>
+        <div class="item item-icon-left">
+        <i class="icon ion-ios-telephone-outline"></i>
+        <input type="text" ng-model="persona.extension"/>
+        </div>
+
+        <hr>
+
+        <div>
+<input class="button button-block button-assertive" type="submit" value="Aceptar" ng-click="modificarDatos(persona.id, persona.avatar, persona.email, persona.phone, persona.extension)">
+        </div>
+
+      </div>
+
+
+   <!--      <img ng-src="{{persona.avatar}}" style="width: 64px; height: 64px">
+      
+         <h4>Modificar teléfono</h4>
+         <h4 class="icon ion-ios-telephone-outline"> <input type="text" ng-model="persona.phone"/>
+        
+        
+         <h4>Modificar e-mail</h4>
+        	<span class="linea"><i class="icon ion-email"><input class="linea" type="text" ng-model="persona.email"></i><span>
+            
+          
+        
+      
+      <input class="button button-block button-assertive" type="submit" value="Aceptar" ng-click="modificarDatos()">
+      <hr>
+
+-->
+
+  </ion-content>
+</ion-view>
+
+
+<!--
+
+<div class="list">
+
+  <a class="item item-icon-left" href="#">
+    <i class="icon ion-email"></i>
+    Check mail
+  </a>
+
+  <a class="item item-icon-left item-icon-right" href="#">
+    <i class="icon ion-chatbubble-working"></i>
+    Call Ma
+    <i class="icon ion-ios-telephone-outline"></i>
+  </a>
+
+  <a class="item item-icon-left" href="#">
+    <i class="icon ion-mic-a"></i>
+    Record album
+    <span class="item-note">
+      Grammy
+    </span>
+  </a>
+
+  <a class="item item-icon-left" href="#">
+    <i class="icon ion-person-stalker"></i>
+    Friends
+    <span class="badge badge-assertive">0</span>
+  </a>
+
+</div>
+
+  -->
+
+
+  <!--  <textarea maxlength="500" name="message" id="message" placeholder="{{persona.phone}}"></textarea>  -->
+
+  <!--<textarea maxlength="500" name="message" id="message" placeholder="{{persona.email}}"></textarea>-->

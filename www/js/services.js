@@ -49,6 +49,24 @@ angular.module('starter.services', [])
                                 //     );
                                 // };
 
+        //probando modificar datos
+
+        // Tienes un nuevo método en el api para actualizar datos de contacto:
+        // URL: http://[host]/bs-contactos/api/contacts/{id}
+        // donde {id} es el id de contacto obtenido al hacer login.
+        // Los datos a enviar por POST son:
+        // {"avatar":"url","email":"2","extension":"3","phone":"4","password":"1234"}
+
+        instance.ModifiUser = function(id, datosModificados){
+            var url = "/contacts/".concat(id); 
+            console.log(id);
+            console.log(url);
+            var DeferValue = $q.defer();
+            doPost(url, datosModificados, DeferValue.resolve, DeferValue.reject);
+            return DeferValue.promise;
+        };
+
+
         //Make get request
         doGet = function(url, onSuccessCallback, onErrorCallback){
             var req = {

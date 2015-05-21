@@ -2,22 +2,116 @@
  
 <ion-view view-title="{{persona.name}}" name="contactoDetalle-view">
   <ion-content class="padding">
-    <img ng-src="{{persona.avatar}}" style="width: 64px; height: 64px">
-      <p>
-        <h4 class="icon ion-ios-telephone-outline">  
-          <a href="tel:{{persona.phone}}">{{persona.phone}} </a> 
-        </h4>
-        <h4 class="icon ion-email"> 
-          <a href="mailto:{{persona.email}}">   {{persona.email}} </a>
-        </h4>
-      </p>
+    
+
+<img ng-src="{{persona.avatar}}" style="width: 64px; height: 64px">
+
+
+
+
+
+  <a class="item item-icon-left" >
+    <i class="icon ion-email" href="mailto:{{persona.email}}" style="font-size:medium">{{persona.email}}</i>
+ <span class="item-note">
+      Email
+    </span>
+    
+  </a>
+
+  <a class="item item-icon-left" >
+    <i class="icon ion-ios-telephone" href="tel:{{persona.phone}}" style="font-size:medium">{{persona.phone}}</i>
+    <span class="item-note">
+      Teléfono
+    </span>
+    
+  </a>
+
+  <a class="item item-icon-left">
+   
+    <i class="icon ion-ios-telephone-outline" href="tel:{{persona.phone+persona.extension}}" style="font-size:medium">{{persona.extension}}</i>
+    <span class="item-note">
+      Extensión
+    </span>
+  </a>
+
+
+  
       <hr>
-      <form id="enquiry" action="">
+
+      <form id="enquiry">
+        <input class="button button-block button-dark" type="submit" value="Modificar datos" ng-click="irAModificar(item.id)">  
+      <!--  <button ng-click="irAModificar()">MODIFICAR!</button> -->
         <h5>Mensaje</h5>
         <textarea maxlength="500" name="message" id="message" placeholder="Escribe aquí tu comentario" ng-model="comentario"></textarea>
         {{comentario}}
         <br>
-        <input class="button button-block button-assertive" type="submit" value="Enviar" ng-click="enviarComentario(comentario, persona.username)">
+        <input class="button button-block button-assertive" type="submit" value="Enviar mensaje" ng-click="enviarComentario(comentario, persona.username)">
       </form>
+
   </ion-content>
 </ion-view>
+
+
+
+<!--
+
+<div class="list">
+
+  <a <img ng-src="{{persona.avatar}}" style="width: 64px; height: 64px">
+  </a>
+
+  <a class="item item-icon-left" >
+    <i class="icon ion-email"></i>
+    <a class="datoLink" href="mailto:{{persona.email}}">   {{persona.email}} </a>
+    <span class="item-note">
+      Email
+    </span>
+  </a>
+
+  <a class="item item-icon-left" >
+    <i class="icon ion-ios-telephone"></i>
+    <a class="datoLink" href="tel:{{persona.phone}}">{{persona.phone}} </a> 
+    <span class="item-note">
+      Teléfono
+    </span>
+  </a>
+
+  <a class="item item-icon-left">
+    <i class="icon ion-ios-telephone-outline"></i>
+    <a class="datoLink" href="tel:{{persona.phone+persona.extension}}">   {{persona.extension}} </a>
+    <span class="item-note">
+      Extensión
+    </span>
+  </a>
+
+</div>
+
+
+
+
+
+
+
+
+      <img ng-src="{{persona.avatar}}" style="width: 64px; height: 64px">
+      <p>
+        <h4 class="icon ion-ios-telephone-outline">  
+          <a class="datoLink" href="tel:{{persona.phone}}">{{persona.phone}} </a> 
+        </h4>
+        <h4 class="icon ion-email"> 
+          <a class="datoLink" href="mailto:{{persona.email}}">   {{persona.extension}} </a>
+        </h4>
+        <h4 class="icon ion-email"> 
+          <a class="datoLink" href="mailto:{{persona.email}}">   {{persona.email}} </a>
+        </h4>
+        
+
+      </p>
+
+
+
+
+
+
+
+-->

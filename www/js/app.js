@@ -38,6 +38,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 
       $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
+                    
+         // alert(JSON.stringify(notification));
+         // alert('message = ' + notification.message + ' msgCount = ' + notification.msgcnt);
+
         switch(notification.event) {
           case 'registered':
           if (notification.regid.length > 0 ) {
@@ -67,6 +71,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           case 'message':
             // this is the actual push notification. its format depends on the data model from the push server
             alert('message = ' + notification.message + ' msgCount = ' + notification.msgcnt);
+            //alert('message = ' + notification.payload.score + ' msgCount = ' + notification.msgcnt);
+            //{"data":{"message":"@message","title":"maisBus"},"registration_ids":[@registration_ids],"time_to_live":@time_to_live}
+            alert(JSON.stringify(notification));
             break;
 
           case 'error':
@@ -78,14 +85,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             break;
         }
       });
+    
+
     });
   })
-
-
-
-
-
-
 
 
 
@@ -114,11 +117,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       url: '/contactoDetalle',
       templateUrl: 'templates/contactoDetalle.html',
       controller: 'ContactoDetalleCtrl'
+  })
+
+  .state('modificarDatos', {
+      url: '/modificarDatos',
+      templateUrl: 'templates/modificarDatos.html',
+      controller: 'ModificarDatosCtrl'
   });
 
   //ruta predeterminada
   $urlRouterProvider.otherwise('/login');
 
 })
+
+
+.config(['$compileProvider', function($compileProvider) {
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|tel|ftp|mailto|chrome-extension):/);
+}]);
+
+
 ;
 

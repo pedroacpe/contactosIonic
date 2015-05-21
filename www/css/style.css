@@ -1,11 +1,5 @@
 /* Empty. Add your own CSS if you like */
-form {
- position: relative;
 
-height: auto;
- width: 100%;
-
-}
 
 form textarea {
  border-radius: 2px;
@@ -19,3 +13,23 @@ form textarea {
 }
 
 
+
+input[type="text"] {
+  border: 1;
+  width: 100%;
+}
+
+.linea {
+	display:inline;
+}
+
+.item {
+  border-color: #FFF;
+   }
+
+
+
+
+div {
+    font-size-adjust: 0.58;
+}
